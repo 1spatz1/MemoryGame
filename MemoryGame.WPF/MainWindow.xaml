@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemoryGame.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Memory Game" 
+        Height="720" Width="1280"
+        MinHeight="720" MinWidth="1280"
+        >
     <Grid>
-
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="../Assets/meow.jpeg"/>
+        </Grid.Background>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock HorizontalAlignment="Center" Margin="10" Grid.ColumnSpan="4" Foreground="White" FontSize="72" FontFamily="Global Monospace">Memory Game</TextBlock>
+        <DockPanel LastChildFill="False" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label x:Name="ErrorLabel" Content="" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" Margin="0,122,0,0" VerticalAlignment="Top"/>
+            <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Foreground="White" FontSize="18">Please fill in your name</TextBlock>
+            <TextBox Margin="10" DockPanel.Dock="Top" x:Name="NameBox" FontSize="20" />
+            <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Foreground="White" FontSize="18">Select Amount of Cards</TextBlock>
+            <TextBox Margin="10" DockPanel.Dock="Top" x:Name="CardAmountBox" FontSize="20" />
+            <Button Click="GetGameData" DockPanel.Dock="Top" Padding="25"  Background="#3b3b3b" Foreground="white" FontSize="18">Start Game</Button>
+        </DockPanel>
+        <Button Grid.Row="2" Grid.Column="0"  Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Background="#3b3b3b" Foreground="white" FontSize="18">Upload Images</Button>
+        <Button Click="OpenLeaderboard" Grid.Row="2" Grid.Column="3"  Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Background="#3b3b3b" Foreground="white" FontSize="18">Leaderboard</Button>
     </Grid>
 </Window>

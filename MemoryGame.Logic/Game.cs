@@ -66,6 +66,9 @@ public static class Game
         Time = Math.Round(_stopWatch.Elapsed.TotalSeconds); // saves time
         Score = CalculateGameScore(); // calculates score
         OnGameFinished();
+        _stopWatch.Reset();
+        Turns = 0;
+        Cards.Clear();
     }
     
     public static void ClearGame()

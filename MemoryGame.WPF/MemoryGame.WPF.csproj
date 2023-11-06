@@ -7,4 +7,26 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+
+    <ItemGroup>
+      <None Remove="Assets\meow.jpeg" />
+      <Resource Include="Assets\meow.jpeg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\questionmark.png" />
+      <Resource Include="Assets\questionmark.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\shinji.jpg" />
+      <Resource Include="Assets\shinji.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\MemoryGame.DataAccess\MemoryGame.DataAccess.csproj" />
+    </ItemGroup>
+
 </Project>

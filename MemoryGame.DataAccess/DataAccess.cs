@@ -5,13 +5,13 @@ namespace MemoryGame.DataAccess;
 
 public class DataAccess
 {
-    private Collection<Game> _gamesCollection = new();
+    private List<Game> _gamesList = new();
 
     private string GetFilePath(string input)
     {
         var currentDirectory = Directory.GetCurrentDirectory();
-        var idk = Path.Combine(currentDirectory, "../../../../MemoryGame.DataAccess/");
-        return Path.Combine(idk, input);
+        var filePath = Path.Combine(currentDirectory, "../../../../MemoryGame.DataAccess/");
+        return Path.Combine(filePath, input);
     }
 
     public int GetTotalAmountScores()
@@ -46,11 +46,10 @@ public class DataAccess
         xmlDoc.Save(GetFilePath("highscores.xml"));
     }
 
-    public Collection<Game> GetHighscores()
+    public List<Game> GetHighscores()
     {
         try {
             XDocument xmlDoc = XDocument.Load(GetFilePath("highscores.xml"));
-            List<string> gamesList = null;
 
             var games = xmlDoc.Descendants("Game")
                 .Select(gameElement => {
@@ -66,7 +65,7 @@ public class DataAccess
         
             // Adds all games to GamesCollection
             foreach (var game in games) {
-                _gamesCollection.Add(game);
+                _gamesList.Add(game);
             }
         }
         catch (FileNotFoundException ex) {
@@ -76,12 +75,12 @@ public class DataAccess
             // MessageBox.Show("ERROR: \n" + ex.Message); 
         }
 
-        return _gamesCollection;
+        return _gamesList;
     }
 
-    public Collection<Game> GetGamesCollection()
+    public List<Game> GetGamesCollection()
     {
-        return _gamesCollection;
+        return _gamesList;
     }
     
     public class Game {
