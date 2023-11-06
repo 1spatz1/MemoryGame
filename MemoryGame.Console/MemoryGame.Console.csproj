@@ -7,4 +7,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MemoryGame.DataAccess\MemoryGame.DataAccess.csproj" />
+      <ProjectReference Include="..\MemoryGame.Logic\MemoryGame.Logic.csproj" />
+    </ItemGroup>
+
 </Project>

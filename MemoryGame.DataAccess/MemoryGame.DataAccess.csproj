@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+
+    <ItemGroup>
+      <ProjectReference Include="..\MemoryGame.Logic\MemoryGame.Logic.csproj" />
+    </ItemGroup>
+
 </Project>
