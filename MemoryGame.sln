@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.Logic", "MemoryGame.Logic\MemoryGame.Logic.csproj", "{DAC094D9-39D5-478D-9EDA-8631F4577593}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.WPF", "MemoryGame.WPF\MemoryGame.WPF.csproj", "{218F3015-938A-4589-BE1C-227EF7D89CEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.Console", "MemoryGame.Console\MemoryGame.Console.csproj", "{CE401607-3CD2-4C85-AF85-A5A612D1C43E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.DataAccess", "MemoryGame.DataAccess\MemoryGame.DataAccess.csproj", "{AB387805-BECA-47CA-BAD4-ECABB82AE69F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAC094D9-39D5-478D-9EDA-8631F4577593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC094D9-39D5-478D-9EDA-8631F4577593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC094D9-39D5-478D-9EDA-8631F4577593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC094D9-39D5-478D-9EDA-8631F4577593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{218F3015-938A-4589-BE1C-227EF7D89CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{218F3015-938A-4589-BE1C-227EF7D89CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{218F3015-938A-4589-BE1C-227EF7D89CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{218F3015-938A-4589-BE1C-227EF7D89CEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE401607-3CD2-4C85-AF85-A5A612D1C43E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE401607-3CD2-4C85-AF85-A5A612D1C43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE401607-3CD2-4C85-AF85-A5A612D1C43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE401607-3CD2-4C85-AF85-A5A612D1C43E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB387805-BECA-47CA-BAD4-ECABB82AE69F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB387805-BECA-47CA-BAD4-ECABB82AE69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB387805-BECA-47CA-BAD4-ECABB82AE69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB387805-BECA-47CA-BAD4-ECABB82AE69F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
