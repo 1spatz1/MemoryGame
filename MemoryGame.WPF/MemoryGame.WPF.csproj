@@ -21,6 +21,26 @@
       <Resource Include="Assets\shinji.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
+      <None Remove="Assets\CardImages\846be76723fd109c8ccdc2cb27251d72.jpg" />
+      <Resource Include="Assets\CardImages\846be76723fd109c8ccdc2cb27251d72.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\CardImages\5335553.jpg" />
+      <Resource Include="Assets\CardImages\5335553.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\CardImages\draw-a-cute-kawaii-anime-profile-or-icon.jpg" />
+      <Resource Include="Assets\CardImages\draw-a-cute-kawaii-anime-profile-or-icon.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\CardImages\Nishikino-Maki395174441499767528.jpg" />
+      <Resource Include="Assets\CardImages\Nishikino-Maki395174441499767528.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\CardImages\wp7151906.jpg" />
+      <Resource Include="Assets\CardImages\wp7151906.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
 
@@ -28,5 +48,8 @@
     <ItemGroup>
       <ProjectReference Include="..\MemoryGame.DataAccess\MemoryGame.DataAccess.csproj" />
     </ItemGroup>
+
+
+
 
 </Project>

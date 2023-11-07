@@ -58,7 +58,7 @@ public class DataAccess
                         Score = int.Parse(gameElement.Attribute("score").Value),
                         Date = gameElement.Attribute("date").Value,
                         Turns = int.Parse(gameElement.Attribute("turns").Value),
-                        NumberOfCards = int.Parse(gameElement.Attribute("numberOfCards").Value)
+                        AmountOfCards = int.Parse(gameElement.Attribute("numberOfCards").Value)
                     };
                 })
                 .OrderByDescending(game => game.Score);
@@ -85,9 +85,9 @@ public class DataAccess
     
     public class Game {
         public string Name { get; set; }
-        public double Score { get; set; }
+        public int Score { get; set; }
         public string Date { get; set; }
         public int Turns { get; set; }
-        public int NumberOfCards { get; set; }
+        public int AmountOfCards { get; set; }
     }
 }
