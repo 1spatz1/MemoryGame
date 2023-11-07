@@ -33,7 +33,7 @@ public partial class GameWindow : Window{
         if(firstButton == clickedCard) {
             // Reset alles
             Image image = clickedCard.FindName("CardImage") as Image;
-            image.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/question.png"));
+            image.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
             firstCardId = 0;
             firstButton = null;
             clickedCardId = 0;
@@ -45,14 +45,14 @@ public partial class GameWindow : Window{
             firstButton = clickedCard; // Slaat de eerste knop op
 
             Image image = firstButton.FindName("CardImage") as Image;
-            image.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/card_{Game.Cards[firstCardId-1]}.png"));
+            image.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
         }
         else if (secondCardId == 0) {
             secondCardId = clickedCardId; // Slaat het getal van de eerste kaart op
             secondButton = clickedCard; // Slaat de eerste knop op
             
             Image image = secondButton.FindName("CardImage") as Image;
-            image.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/card_{Game.Cards[secondCardId-1]}.png"));
+            image.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
         }
         else { // Zo niet
             // Image image = clickedCard.FindName("CardImage") as Image;
@@ -66,13 +66,15 @@ public partial class GameWindow : Window{
                 secondButton.IsEnabled = false;
 
                 Image image = secondButton.FindName("CardImage") as Image;
-                image.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/card_{Game.Cards[firstCardId-1]}.png"));
+                image.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
             }
             else {
                 Image image = firstButton.FindName("CardImage") as Image;
-                image.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/question.png"));
+                // image.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/question.png"));
+                image.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
                 Image image2 = secondButton.FindName("CardImage") as Image;
-                image2.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/question.png"));
+                // image2.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/question.png"));
+                image2.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
             }
 
             // Reset de kaarten 
