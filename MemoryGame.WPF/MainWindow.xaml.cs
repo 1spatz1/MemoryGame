@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MemoryGame.Logic;
 using MemoryGame.WPF.Views;
+using Microsoft.Win32;
 
 namespace MemoryGame.WPF
 {
@@ -29,9 +32,43 @@ namespace MemoryGame.WPF
         
         private void OpenLeaderboard(object sender, RoutedEventArgs e) {
             // Maakt een leaderboard aan en laat deze zien
-            Leaderboard leaderboard = new Leaderboard();
+            LeaderboardWindow leaderboard = new LeaderboardWindow();
             leaderboard.Show();
             Close();
+        }
+        
+        private void UploadImages(object sender, RoutedEventArgs e) {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Pictures|*.png;*.jpg;*.webp;*.jpeg";
+            openFileDialog.Multiselect = true;
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.CheckPathExists = true;
+
+            bool? response = openFileDialog.ShowDialog();
+
+            if(response == true) {
+                foreach (String file in openFileDialog.FileNames) {
+                    var fullPath = file;
+                    string[] partsFileName = fullPath.Split('\\');
+                    var image= partsFileName[(partsFileName.Length - 1)];
+                    SaveImages(image, fullPath);
+                }
+            }
+        }
+
+        public void SaveImages(string image, string fullPath)
+        {
+            string destinationPath = GetDestinationPath(image, @"..\..\..\Assets\CardImages");
+
+            File.Copy(fullPath, destinationPath, true);
+        }
+        
+        private static String GetDestinationPath(string filename, string foldername)
+        {
+            String appStartPath = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+
+            appStartPath = String.Format(appStartPath + "\\{0}\\" + filename, foldername);
+            return appStartPath;
         }
         
         private void GetGameData(object sender, RoutedEventArgs e) {

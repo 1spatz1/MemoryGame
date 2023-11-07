@@ -65,8 +65,6 @@ public partial class GameWindow : Window{
             image.Source = new BitmapImage(new Uri($"../Assets/CardImages/{Game.Cards[secondCardId-1].Image}", UriKind.Relative));
         }
         else { // Zo niet
-            // Image image = clickedCard.FindName("CardImage") as Image;
-            // image.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/card_{GameSupport.Cards[clickedCardId-1].Number}.png"));
             // Vergelijkt de kaarten
             // Doet -1 omdat de index begint bij 0, maar id van de kaarten bij 1
             if(Game.CompareCards(firstCardId-1, secondCardId-1)) {
@@ -80,10 +78,8 @@ public partial class GameWindow : Window{
             }
             else {
                 Image image = firstButton.FindName("CardImage") as Image;
-                // image.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/question.png"));
                 image.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
                 Image image2 = secondButton.FindName("CardImage") as Image;
-                // image2.Source = new BitmapImage(new Uri($"https://martijnschuman.nl/MemoryWPFImages/question.png"));
                 image2.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
             }
 
@@ -105,8 +101,8 @@ public partial class GameWindow : Window{
     private void AddImages(List<Card> Cards)
     {
         Dictionary<char, string> addedImages = new Dictionary<char, string>();
-        // List<string> images = GetFileNames("../../../Assets/CardImages/", @"\.jpg|\.png|\.webp|\.jpeg/gmisx");
         List<string> images = GetFiles("../../../Assets/CardImages/", @"\.jpg|\.png|\.webp|\.jpeg/gmisx").ToList();
+        images.Shuffle();
         foreach (var card in Game.Cards) {
             if (!addedImages.ContainsKey(card.Character)) {
                 card.SetImage(images.First());

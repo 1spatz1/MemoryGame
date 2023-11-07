@@ -17,6 +17,10 @@ class LeaderboardViewModel : INotifyPropertyChanged {
         
         public LeaderboardViewModel()
         {
+            AddElements();
+        }
+        
+        private void AddElements() {
             var highscores = _dataAccess.GetHighscores();
             foreach (var highscore in highscores) {
                 GamesCollection.Add(highscore);
@@ -26,5 +30,4 @@ class LeaderboardViewModel : INotifyPropertyChanged {
         protected virtual void OnPropertyChanged(string propertyName) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
-    }
+}

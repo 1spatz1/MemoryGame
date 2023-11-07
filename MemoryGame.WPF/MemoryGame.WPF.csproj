@@ -41,6 +41,14 @@
       <Resource Include="Assets\CardImages\wp7151906.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
+      <None Remove="Assets\CardImages\lFx39jp.jpeg" />
+      <Resource Include="Assets\CardImages\lFx39jp.jpeg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\CardImages\938.jpg" />
+      <Resource Include="Assets\CardImages\938.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
 
