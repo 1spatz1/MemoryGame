@@ -10,6 +10,8 @@ using System.Xml.Linq;
 using MemoryGame.DataAccess.Events;
 using MemoryGame.Logic;
 using MemoryGame.WPF.Models;
+using MemoryGame.WPF;
+using MemoryGame.WPF.Functions;
 
 namespace MemoryGame.WPF.Views;
 
@@ -20,28 +22,28 @@ public partial class GameWindow : Window{
         HighscoreService highscoreService = new(); // make new highscoreservice instance
         Game.GameFinished += highscoreService.OnGameFinished; // subscribe it to the game
 
-        // Start het spel
+        // Start the game
         Game.StartGame(player, numberOfCards);
         
         //add images to cards
         AddImages(Game.Cards);
 
-        // Zet de dataContext voor de UI; welke data hij moet gebruiken
+        // set dataContext for the UI;
         DataContext = new GameViewModel(numberOfCards, Game.Cards); 
     }
 
-    // Methode die het klikken op een kaart verder afhandeld
-    private int firstCardId = 0; // Eerste kaart wordt opgeslagen zodat deze kan worden vergeleken met de tweede
-    private Button firstButton = null; // Eerste button wordt opgeslagen zodat deze later kan worden bewerkt kan worden
-    private int secondCardId = 0;
-    private Button secondButton = null;
+    // Method for processing card clicks
+    private int firstCardId = 0; // First card get saved
+    private Button firstButton = null; // First button gets saved
+    private int secondCardId = 0; // Second card get saved
+    private Button secondButton = null; // Second button gets saved
     private void CardChosen(object sender, RoutedEventArgs e) {
-        Button clickedCard = (Button)sender; // Zet de sender om in een button
-        int clickedCardId = int.Parse(clickedCard.Tag.ToString()); // Pakt de waarde uit de button om zo juiste kaart op te halen
+        Button clickedCard = (Button)sender; // Set the sender into a button
+        int clickedCardId = int.Parse(clickedCard.Tag.ToString()); // Grab the value from button to get the right card
 
-        // Als er twee keer op dezelfde knop wordt gedrukt
+        // If same button gets pressed twice
         if(firstButton == clickedCard) {
-            // Reset alles
+            // Reset everything
             Image image = clickedCard.FindName("CardImage") as Image;
             image.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
             firstCardId = 0;
@@ -50,40 +52,43 @@ public partial class GameWindow : Window{
             clickedCard = null;
             return;
         }
-        else if (firstCardId == 0) { // Als het om de eerste van de twee kaarten gaat
-            firstCardId = clickedCardId; // Slaat het getal van de eerste kaart op
-            firstButton = clickedCard; // Slaat de eerste knop op
+        else if (firstCardId == 0) { // If first card is not chosen yet
+            firstCardId = clickedCardId; // Save the Id of the first card
+            firstButton = clickedCard; // Save the button
 
+            // set button images to card image
             Image image = firstButton.FindName("CardImage") as Image;
             image.Source = new BitmapImage(new Uri($"../Assets/CardImages/{Game.Cards[firstCardId-1].Image}", UriKind.Relative));
         }
-        else if (secondCardId == 0) {
-            secondCardId = clickedCardId; // Slaat het getal van de eerste kaart op
-            secondButton = clickedCard; // Slaat de eerste knop op
+        else if (secondCardId == 0) { // If second card is not chosen yet
+            secondCardId = clickedCardId; // Save the Id of the second card
+            secondButton = clickedCard; // Save the button
             
+            // set button images to card image
             Image image = secondButton.FindName("CardImage") as Image;
             image.Source = new BitmapImage(new Uri($"../Assets/CardImages/{Game.Cards[secondCardId-1].Image}", UriKind.Relative));
         }
-        else { // Zo niet
-            // Vergelijkt de kaarten
-            // Doet -1 omdat de index begint bij 0, maar id van de kaarten bij 1
+        else {
+            // Compare the cards
+            // Do -1 because indes starts at 0, but id starts at 1
             if(Game.CompareCards(firstCardId-1, secondCardId-1)) {
-                // Als ze gelijk zijn
-                // Disable beide knoppen zodat er niet meer op gelikt kan worden
+                // if they are even
+                // disable buttons, so they not selectable anymore
                 firstButton.IsEnabled = false;
                 secondButton.IsEnabled = false;
 
-                Image image = secondButton.FindName("CardImage") as Image;
-                image.Source = new BitmapImage(new Uri($"../Assets/CardImages/{Game.Cards[firstCardId-1].Image}", UriKind.Relative));
+                // Image image = secondButton.FindName("CardImage") as Image;
+                // image.Source = new BitmapImage(new Uri($"../Assets/CardImages/{Game.Cards[firstCardId-1].Image}", UriKind.Relative));
             }
             else {
+                // set button images back to the closed image
                 Image image = firstButton.FindName("CardImage") as Image;
                 image.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
                 Image image2 = secondButton.FindName("CardImage") as Image;
                 image2.Source = new BitmapImage(new Uri("../Assets/shinji.jpg", UriKind.Relative));
             }
 
-            // Reset de kaarten 
+            // Reset the cards 
             firstCardId = 0;
             firstButton = null;
             clickedCardId = 0;
@@ -91,7 +96,7 @@ public partial class GameWindow : Window{
             secondCardId = 0;
             secondButton = null;
 
-            // Als alle kaarten gegokt zijn
+            // If all cards are open
             if (Game.IsGameFinished()) {
                 GameFinished();
             }
@@ -101,7 +106,7 @@ public partial class GameWindow : Window{
     private void AddImages(List<Card> Cards)
     {
         Dictionary<char, string> addedImages = new Dictionary<char, string>();
-        List<string> images = GetFiles("../../../Assets/CardImages/", @"\.jpg|\.png|\.webp|\.jpeg/gmisx").ToList();
+        List<string> images = GetFilesFunction.GetFiles("../../../Assets/CardImages/", @"\.jpg|\.png|\.webp|\.jpeg/gmisx").ToList();
         images.Shuffle();
         foreach (var card in Game.Cards) {
             if (!addedImages.ContainsKey(card.Character)) {
@@ -116,36 +121,10 @@ public partial class GameWindow : Window{
         }
     }
     
-    public static IEnumerable<string> GetFiles(string path, string searchPatternExpression, SearchOption searchOption = SearchOption.TopDirectoryOnly)
-    {
-        Regex reSearchPattern = new Regex(searchPatternExpression);
-        return Directory.EnumerateFiles(path, "*", searchOption).Where(file => reSearchPattern.IsMatch(Path.GetFileName(file)));
-    }
-
-    public static List<string> GetFileNames(string path, string searchPatternExpression)
-    {
-        // Take a snapshot of the file system.  
-        DirectoryInfo dir = new DirectoryInfo(path);  
-  
-        // This method assumes that the application has discovery permissions  
-        // for all folders under the specified path.  
-        IEnumerable<FileInfo> fileList = dir.GetFiles("*.*", SearchOption.TopDirectoryOnly);
-  
-        //Create the query  
-        Regex reSearchPattern = new Regex(searchPatternExpression);
-
-        IEnumerable<FileInfo> fileQuery =
-            from file in fileList
-            where reSearchPattern.IsMatch(file.Name)
-            select file;
-        
-        return fileQuery.Select(file => file.Name).ToList();
-    }
-    
     private void GameFinished() {
         Game.StopGame();
 
-        MessageBox.Show($"Het spel is afgelopen! " +
+        MessageBox.Show($"The game is finised!! " +
             $"\nTotaal duration: {Game.Time} seconden " +
             $"\nTotaal attempts: {Game.Turns}" +
             $"\nScore: {Game.Score}"

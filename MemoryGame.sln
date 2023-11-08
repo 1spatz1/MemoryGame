@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.Console", "Memor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.DataAccess", "MemoryGame.DataAccess\MemoryGame.DataAccess.csproj", "{AB387805-BECA-47CA-BAD4-ECABB82AE69F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.NUnit", "MemoryGame.NUnit\MemoryGame.NUnit.csproj", "{299F0044-DEED-40B2-B752-A1E16F0C4A7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{AB387805-BECA-47CA-BAD4-ECABB82AE69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB387805-BECA-47CA-BAD4-ECABB82AE69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB387805-BECA-47CA-BAD4-ECABB82AE69F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{299F0044-DEED-40B2-B752-A1E16F0C4A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{299F0044-DEED-40B2-B752-A1E16F0C4A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{299F0044-DEED-40B2-B752-A1E16F0C4A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{299F0044-DEED-40B2-B752-A1E16F0C4A7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

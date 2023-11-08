@@ -18,17 +18,18 @@ public class DataAccess
     {
         XDocument xmlDoc = XDocument.Load(GetFilePath("highscores.xml"));
 
-        return xmlDoc.Descendants("Leaderboard").Count();
+        return xmlDoc.Descendants("Game").Count();
     }
 
-    public void RemoveScore(string target)
+    public void RemoveScore(int target)
     {
         XDocument xmlDoc = XDocument.Load(GetFilePath("highscores.xml"));
         
-        xmlDoc.Descendants("Leaderboard")
-            .Elements("Game")
-            .Where(x => x.Value == target)
+        xmlDoc.Descendants("Game")
+            .Where(x => (int)x.Attribute("score") == target)
             .Remove();
+        
+        xmlDoc.Save(GetFilePath("highscores.xml"));
     }
     
     public void AddScore(string playerName, double score, DateTime date, int turns, int cardAmount)

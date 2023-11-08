@@ -16,27 +16,27 @@ namespace MemoryGame.WPF.Models;
 
 
 class GameViewModel : INotifyPropertyChanged {
-    // Getter en setter voor de viewCardsList
+    // Getter and Setter viewCardsList
     private ObservableCollection<Card> viewCardsList = new ();
     public ObservableCollection<Card> ViewCardsList {
         get { return viewCardsList; }
         set {
             viewCardsList = value;
-            OnPropertyChanged(nameof(ViewCardsList)); // Zorgt ervoor dat de WPF UI wordt bijgewerkt
+            OnPropertyChanged(nameof(ViewCardsList)); // Makes it WPF UI gets changed
         }
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    // Constructor die de ObservableCollection vult met de kaarten
+    // Constructor that fills ObservableCollection with cards
     public GameViewModel(int numberOfCards, List<Card> Cards) {
-        // Vul de ObservableCollection met kaarten uit de gegeven lijst
+        // fill the ObservableCollection with cards from list
         for (int i = 0; i < numberOfCards; i++) {
             ViewCardsList.Add(Cards[i]);
         }
     }
 
-    // Wordt aangeroepen om wijzigingen in eigenschappen door te geven
+    // gets called to change properties
     protected virtual void OnPropertyChanged(string propertyName) {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

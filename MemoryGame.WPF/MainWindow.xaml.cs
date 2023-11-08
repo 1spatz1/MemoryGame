@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using MemoryGame.Logic;
 using MemoryGame.WPF.Views;
 using Microsoft.Win32;
+using MemoryGame.WPF.Functions;
 
 namespace MemoryGame.WPF
 {
@@ -31,7 +32,7 @@ namespace MemoryGame.WPF
         }
         
         private void OpenLeaderboard(object sender, RoutedEventArgs e) {
-            // Maakt een leaderboard aan en laat deze zien
+            // Make new leaderboard and show
             LeaderboardWindow leaderboard = new LeaderboardWindow();
             leaderboard.Show();
             Close();
@@ -76,39 +77,46 @@ namespace MemoryGame.WPF
             Player player = null;
             int numberOfCards = 0;
 
-            // Als de input leeg is
+            // If input is empty
             if (string.IsNullOrEmpty(NameBox.Text)) {
-                // Geef een error
-                ErrorLabel.Content = "Spelers naam mag niet leeg zijn!\n";
+                // Give error
+                ErrorLabel.Content = "Player name can't be empty!\n";
             }
             else {
-                // Maak anders een speler aan
+                // Make new player
                 player = new Player(NameBox.Text);
             }
 
-            // Als de input niet leeg is
+            // If input is not empty
             if (!string.IsNullOrWhiteSpace(CardAmountBox.Text)) {
-                // En de input is een getal, een getal niet kleiner dan 10 en een even getal
+                // If input is a number, but not smaller than 10 and is even
                 if (int.TryParse(CardAmountBox.Text, out int result) && result >= 10 && result % 2 == 0) {
-                    numberOfCards = result;
+                    int imagesCount;
+                    if (result / 2 <= (imagesCount = GetFilesFunction.GetFiles("../../../Assets/CardImages/", @"\.jpg|\.png|\.webp|\.jpeg/gmisx").Count())) {
+                        numberOfCards = result;
+                    }
+                    else {
+                        // Give error
+                        ErrorLabel.Content += $"Please upload {result / 2 - imagesCount} images, if you want to play with {result}";
+                    }
                 }
                 else {
-                    // Geef een error
-                    ErrorLabel.Content += "Voer een getal in dat groter is dan 10 en even is.";
+                    // Give error
+                    ErrorLabel.Content += "Enter a number that's greater than 10 and even.";
                 }
             }
             else {
-                // Geef een error
-                ErrorLabel.Content += "Aantal kaarten mag niet leeg zijn!";
+                // Give error
+                ErrorLabel.Content += "Amount of cards can't be empty!";
             }
 
-            // Ga pas verder als ze de juiste waardes zijn gezet
+            // If player isnt null and numberofcards isnt 0
             if (player != null && numberOfCards != 0){
-                // Maakt de gameWindow met juiste informatie
+                // make new gameWindow with info
                 GameWindow gameWindow = new GameWindow(player, numberOfCards);
-                // Sluit huidige window  
+                // Close current window
                 Close();
-                // Laat de gameWindow zien
+                // Show gamewindow
                 gameWindow.Show();
             }
         }

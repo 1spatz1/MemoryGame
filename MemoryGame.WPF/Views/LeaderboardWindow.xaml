@@ -18,8 +18,8 @@
                 <DataGridTextColumn Header="Naam" Width="*" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Score" Width="*" Binding="{Binding Score}" />
                 <DataGridTextColumn Header="Datum" Width="*" Binding="{Binding Date}" />
-                <DataGridTextColumn Header="Gokken" Width="*" Binding="{Binding Turns}" />
-                <DataGridTextColumn Header="Kaarten" Width="*" Binding="{Binding AmountOfCards}" />
+                <DataGridTextColumn Header="Turns" Width="*" Binding="{Binding Turns}" />
+                <DataGridTextColumn Header="Cards" Width="*" Binding="{Binding AmountOfCards}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

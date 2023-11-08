@@ -12,7 +12,7 @@ public class ConsoleGame
         Game.GameFinished += highscoreService.OnGameFinished; // subscribe it to the game
         Game.StartGame(player, numberOfCards); // start the game
 
-        // Zaslong as game isnt finished
+        // aslong as game isnt finished
         while (!Game.IsGameFinished()) {
             PrintConsoleTable(); // print all cards
             Thread.Sleep(500); // delay by duration bcs yeah
@@ -25,9 +25,10 @@ public class ConsoleGame
 
     // print the score
     public void PrintConsoleFinished() {
+        System.Console.Clear();
         System.Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-");
 
-        System.Console.WriteLine("The game finished");
+        System.Console.WriteLine("The game is finished");
         System.Console.WriteLine($"\tTotal duration: {Math.Round(Game.Time)} seconden");
         System.Console.WriteLine($"\tTotal tries: {Game.Turns}");
         System.Console.WriteLine($"\tScore: {Math.Round(Game.Score)}");
@@ -35,6 +36,7 @@ public class ConsoleGame
 
     // print the board
     private void PrintConsoleTable() {
+        System.Console.Clear();
         System.Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-");
 
         // for every card

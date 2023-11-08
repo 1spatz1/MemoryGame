@@ -49,6 +49,22 @@
       <Resource Include="Assets\CardImages\938.jpg">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
+      <None Remove="Assets\CardImages\suzumiya_gay.jpg" />
+      <Resource Include="Assets\CardImages\suzumiya_gay.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\CardImages\wp10558663.jpg" />
+      <Resource Include="Assets\CardImages\wp10558663.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\CardImages\wZvVrhiZCgrOUTt6r4tgJhqG8wyWSuNp8_FkRtXTkYk.webp" />
+      <Resource Include="Assets\CardImages\wZvVrhiZCgrOUTt6r4tgJhqG8wyWSuNp8_FkRtXTkYk.webp">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\CardImages\09485ca18e583e12b88b141e43f3c1f2.png" />
+      <Resource Include="Assets\CardImages\09485ca18e583e12b88b141e43f3c1f2.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
 
@@ -56,6 +72,9 @@
     <ItemGroup>
       <ProjectReference Include="..\MemoryGame.DataAccess\MemoryGame.DataAccess.csproj" />
     </ItemGroup>
+
+
+
 
 
 
