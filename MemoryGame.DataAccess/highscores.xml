@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Leaderboard>
   <Game name="Bas" score="1136" date="08-11-2023-12:08" turns="8" numberOfCards="10" />
-  <Game name="Bas" score="769" date="08-11-2023-12:08" turns="10" numberOfCards="10" />
-  <Game name="Bas" score="769" date="08-11-2023-12:08" turns="10" numberOfCards="10" />
-  <Game name="Bas" score="740" date="08-11-2023-12:10" turns="9" numberOfCards="10" />
   <Game name="Bas" score="1428" date="08-11-2023-12:10" turns="7" numberOfCards="10" />
   <Game name="Bas" score="793" date="08-11-2023-12:10" turns="9" numberOfCards="10" />
   <Game name="Bas" score="793" date="08-11-2023-12:10" turns="9" numberOfCards="10" />
   <Game name="Bas" score="854" date="08-11-2023-12:25" turns="9" numberOfCards="10" />
+  <Game name="Bas" score="3333" date="08-11-2023-12:44" turns="5" numberOfCards="10" />
+  <Game name="Bas" score="854" date="08-11-2023-12:44" turns="9" numberOfCards="10" />
+  <Game name="Bas" score="854" date="08-11-2023-12:44" turns="9" numberOfCards="10" />
+  <Game name="Bas" score="1428" date="08-11-2023-12:46" turns="7" numberOfCards="10" />
+  <Game name="Bas" score="1250" date="08-11-2023-12:51" turns="8" numberOfCards="10" />
 </Leaderboard>
